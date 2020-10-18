@@ -1,0 +1,32 @@
+{
+    "id": "40B13053",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1603062196231.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "expression": "gss",
+        "caption": "gss",
+        "totalObservations": 20602,
+        "displayedObservations": 20602,
+        "variables": 81,
+        "cacheKey": "EA952928",
+        "object": "gss",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=gss&cache_key=EA952928&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 0,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1603062196231,
+    "read_only": false,
+    "read_only_alternatives": []
+}
