@@ -3,7 +3,7 @@
     "path": "~/sta304-ps3/report.Rmd",
     "project_path": "report.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "872011146",
     "contents": "",
     "dirty": false,
     "created": 1603063115075.0,
@@ -11,16 +11,16 @@
     "relative_order": 3,
     "properties": {
         "tempName": "Untitled1",
-        "cursorPosition": "4,301",
-        "scrollLine": "4",
+        "cursorPosition": "23,29",
+        "scrollLine": "21",
         "last_setup_crc32": "14F7280Cbb338d19"
     },
     "folds": "",
-    "lastKnownWriteTime": 1603124205,
+    "lastKnownWriteTime": 1603145444,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1603124205,
+    "last_content_update": 1603145695094,
     "read_only": false,
     "read_only_alternatives": []
 }

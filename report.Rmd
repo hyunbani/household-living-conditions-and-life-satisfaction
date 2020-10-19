@@ -1,8 +1,8 @@
 ---
-title: "Better Housing Conditions Improve Life Satisfaction"
+title: "Better Household Living Conditions Improve Life Satisfaction"
 author: "Rachel Oh, Yang Shang"
 date: "19/10/2020"
-abstract: "This report describes the results of research on the effects of household living conditions on life satisfaction. It is found that better housing conditions do improve life satisfaction to a certain degree. These results are important as it is fundamental that people know what makes them satisfied with their lives because no human would wish to have an unsatisfying life."
+abstract: "This report describes the effects of household living conditions on life satisfaction. It is found that better household living conditions do improve life satisfaction to a certain degree. These results are important as it is fundamental that people know what makes them satisfied with their lives because no human would wish to have an unsatisfying life."
 output: pdf_document
 ---
 
@@ -11,6 +11,23 @@ output: pdf_document
 Full code and data supporting this analysis is available at: https://github.com/hyunbani/household-living-conditions-and-life-satisfaction
 
 # Data 
+
+The data was collected from Statistics Canada's General Social Survey (GSS), which is an annual survey with statistical information on the living conditions and well-being of people living in Canada. In this report, we are using the data collected in 2017, through telephone interview. 
+
+People of interest were those who are 15 years of age and older, living in the 10 provinces. However, it would be costly and impractical to survey each and every household in Canada, so random sampling was chosen as a method to determine the sample of 43,000 people, which reflects the population. In order to ensure that the sample is an accurate reflection of the population as a whole, the survey results from all sampled households were collected, and only one eligible person per household was interviewed.
+
+People who did not answer the telephone calls were excluded from the sample. However, there still exist some non responses for some of the questions being asked, and these are recorded as 'NA' in the dataset. 
+
+Since the answers are kept strictly confidential, the respondents must have provided the answers in a more honest manner, leading to an increase in accuracy of data information. However, the collection method was not very efficient since it took a lot of time to collect answers through telephone interview, and many people tend to not answer the phone calls. 
+
+
+
+```{r, echo=FALSE, warning=FALSE}
+library(knitr)
+gss_data = read.csv("outputs/gss_data.csv")
+knitr::kable(gss_data[0:10, ], col.names = c("Case", "Life Satisfaction", "Household Size", "Owned", "Partner", "No Child", "Single House"))
+```
+
 
 # Model
 
@@ -49,3 +66,13 @@ Full code and data supporting this analysis is available at: https://github.com/
   
 - Jacob Kaplan (2020). fastDummies: Fast Creation of Dummy (Binary) Columns and Rows from
   Categorical Variables. R package version 1.6.2. URL https://CRAN.R-project.org/package=fastDummies
+  
+  Yihui Xie (2020). knitr: A General-Purpose Package for Dynamic Report Generation in R. R package
+  version 1.30.
+
+  Yihui Xie (2015) Dynamic Documents with R and knitr. 2nd edition. Chapman and Hall/CRC. ISBN
+  978-1498716963
+
+  Yihui Xie (2014) knitr: A Comprehensive Tool for Reproducible Research in R. In Victoria Stodden,
+  Friedrich Leisch and Roger D. Peng, editors, Implementing Reproducible Computational Research.
+  Chapman and Hall/CRC. ISBN 978-1466561595

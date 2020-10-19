@@ -361,6 +361,8 @@ gss_data <- tibble(
   house = dummy_gss$hh_type_house,
 )
 
+# save the data as a file in outputs folder
+write.csv(gss_data, "outputs/gss_data.csv")
 
 #### Modelling ####
 
