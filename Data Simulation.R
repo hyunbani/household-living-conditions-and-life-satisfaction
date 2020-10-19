@@ -6,6 +6,7 @@ install.packages("janitor")
 #### Workspace set-up ####
 library(janitor)
 library(tidyverse)
+library(haven)
 
 # Load the data dictionary and the raw data and correct the variable names
 raw_data <- read_csv("inputs/AAMxqdH5.csv")

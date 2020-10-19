@@ -43,3 +43,6 @@ Full code and data supporting this analysis is available at: https://github.com/
 
 - Stan Development Team (2020). RStan: the R interface to Stan. R package version 2.21.1. URL
   http://mc-stan.org/.
+  
+- Hadley Wickham and Evan Miller (2020). haven: Import and Export 'SPSS', 'Stata' and 'SAS' Files.
+  R package version 2.3.1. URL https://CRAN.R-project.org/package=haven
