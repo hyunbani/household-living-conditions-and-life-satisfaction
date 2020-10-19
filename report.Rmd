@@ -16,11 +16,20 @@ The data was collected from Statistics Canada's General Social Survey (GSS), whi
 
 People of interest were those who are 15 years of age and older, living in the 10 provinces. However, it would be costly and impractical to survey each and every household in Canada, so random sampling was chosen as a method to determine the sample of 43,000 people, which reflects the population. In order to ensure that the sample is an accurate reflection of the population as a whole, the survey results from all sampled households were collected, and only one eligible person per household was interviewed.
 
-People who did not answer the telephone calls were excluded from the sample. However, there still exist some non responses for some of the questions being asked, and these are recorded as 'NA' in the dataset. 
-
 Since the answers are kept strictly confidential, the respondents must have provided the answers in a more honest manner, leading to an increase in accuracy of data information. However, the collection method was not very efficient since it took a lot of time to collect answers through telephone interview, and many people tend to not answer the phone calls. 
 
+People who did not answer the telephone calls were excluded from the sample. However, there still existed some non responses for some of the questions being asked, and these were recorded as 'NA' in the data. However, for better analysis, rows with answers including 'NA' are removed after reducing the data so that it only contains the variables of interest in this study.
 
+The main variable 'Life Satisfaction' is measured on a scale of 0 to 10, with 10 being the highest satisfaction level and 0 being the lowest. The other variables that explain household living conditions are included such as 'Household Size', 'Owned', 'Partner', 'No Child' and 'Single House'.
+
+The explanation of each independent variable is as follows:\
+1) 'Household Size' - the number of people each respondent lives with\
+2) 'Owned' - 1 if a respondent owns the house and 0 if he/she doesn't\
+3) 'Partner' - 1 if a respondent lives with a partner and 0 if he/she doesn't\
+4) 'No Child' - 1 if a respondent doesn't have any child and 0 if he/she does\
+5) 'Single House' - 1 if respondent's house type is single detached house and 0 if it's not 
+
+The first ten rows of the data are shown below.
 
 ```{r, echo=FALSE, warning=FALSE}
 library(knitr)
