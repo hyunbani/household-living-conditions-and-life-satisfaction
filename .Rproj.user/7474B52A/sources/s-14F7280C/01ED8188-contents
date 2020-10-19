@@ -1,12 +1,17 @@
 #### Packages installation ####
 install.packages("tidyverse")
 install.packages("janitor")
-
+install.packages("fastDummies")
+install.packages("brms")
+install.packages("rstan")
 
 #### Workspace set-up ####
 library(janitor)
 library(tidyverse)
 library(haven)
+library(fastDummies)
+library(brms)
+library(rstan)
 
 # Load the data dictionary and the raw data and correct the variable names
 raw_data <- read_csv("inputs/AAMxqdH5.csv")
@@ -315,3 +320,54 @@ gss <- gss %>%
   )) 
 
 write_csv(gss, "gss.csv")
+
+#### Reduce Data ####
+
+# Select the variables of interest
+reduced_gss <-
+  gss %>%
+  select(own_rent,
+         hh_type,
+         hh_size,
+         feelings_life,
+         lives_with_partner,
+         children_in_household
+         ) %>%
+  # Remove NA responses
+  filter(!is.na(own_rent), !is.na(hh_type), !is.na(feelings_life)
+         ) %>%
+  # Shorten the option names
+  mutate(own_rent = case_when(
+    own_rent=="Owned by you or a member of this household, even if it i..." ~ "Owned",
+    own_rent=="Rented, even if no cash rent is paid" ~ "Rented",
+    TRUE ~ "NA"
+    ))
+
+# Create dummy variables
+dummy_gss <- fastDummies::dummy_cols(reduced_gss)
+
+gss_data <- tibble(
+  life_satisfaction = dummy_gss$feelings_life,
+  household_size = dummy_gss$hh_size,
+  house_owned = dummy_gss$own_rent_Owned,
+  live_with_partner = dummy_gss$lives_with_partner_Yes,
+  no_child = dummy_gss$`children_in_household_No child`
+)
+
+
+#### Modelling ####
+
+# using brm
+gss_model <- brm(life_satisfaction ~ household_size + house_owned + live_with_partner + no_child,
+                    data = gss_data,
+                    family  = gaussian(),
+                    seed = 853)
+# summary of the model
+summary(gss_model)
+# plot
+mcmc_plot(gss_model)
+mcmc_plot(gss_model, type = "hist")
+mcmc_plot(gss_model, type = "trace")
+# posterior
+posterior <- as.array(gss_model)
+bayesplot::mcmc_intervals(posterior)

@@ -1,0 +1,32 @@
+{
+    "id": "60BF17B2",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1603099519227.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "expression": "reduced_gss",
+        "caption": "reduced_gss",
+        "totalObservations": "20331",
+        "displayedObservations": "20331",
+        "variables": "6",
+        "cacheKey": "74420612",
+        "object": "reduced_gss",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=reduced_gss&cache_key=74420612&max_cols=50",
+        "preview": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 140612313987640,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1603099519227,
+    "read_only": false,
+    "read_only_alternatives": []
+}

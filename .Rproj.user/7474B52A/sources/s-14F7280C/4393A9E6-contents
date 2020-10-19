@@ -46,3 +46,6 @@ Full code and data supporting this analysis is available at: https://github.com/
   
 - Hadley Wickham and Evan Miller (2020). haven: Import and Export 'SPSS', 'Stata' and 'SAS' Files.
   R package version 2.3.1. URL https://CRAN.R-project.org/package=haven
+  
+- Jacob Kaplan (2020). fastDummies: Fast Creation of Dummy (Binary) Columns and Rows from
+  Categorical Variables. R package version 1.6.2. URL https://CRAN.R-project.org/package=fastDummies

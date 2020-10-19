@@ -1,0 +1,32 @@
+{
+    "id": "6A0B81A0",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1603106989813.0,
+    "source_on_save": false,
+    "relative_order": 6,
+    "properties": {
+        "expression": "practice_data",
+        "caption": "practice_data",
+        "totalObservations": "20331",
+        "displayedObservations": "20331",
+        "variables": "4",
+        "cacheKey": "0DDFFF7C",
+        "object": "practice_data",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=practice_data&cache_key=0DDFFF7C&max_cols=50",
+        "preview": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 4325107494,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1603106989813,
+    "read_only": false,
+    "read_only_alternatives": []
+}
