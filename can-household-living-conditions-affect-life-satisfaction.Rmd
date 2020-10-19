@@ -6,29 +6,40 @@ abstract: "TODO"
 output: pdf_document
 ---
 
-[^1]: hello.
+# Introduction
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+Full code and data supporting this analysis is available at: https://github.com/hyunbani/household-living-conditions-and-life-satisfaction
 
+# Data 
 
-## R Markdown
+# Results
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+# Discussion
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+# Weaknesses and Next Steps
 
-```{r cars}
-summary(cars)
-```
+# References
 
-## Including Plots
+- R Core Team (2020). R: A language and environment for statistical computing. R Foundation for
+  Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
+  
+- JJ Allaire and Yihui Xie and Jonathan McPherson and Javier Luraschi and Kevin Ushey and Aron
+  Atkins and Hadley Wickham and Joe Cheng and Winston Chang and Richard Iannone (2020). rmarkdown:
+  Dynamic Documents for R. R package version 2.3. URL https://rmarkdown.rstudio.com.
+  
+- Yihui Xie and J.J. Allaire and Garrett Grolemund (2018). R Markdown: The Definitive Guide.
+  Chapman and Hall/CRC. ISBN 9781138359338. URL https://bookdown.org/yihui/rmarkdown.
+  
+- Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686. URL
+  https://doi.org/10.21105/joss.01686
+  
+- Paul-Christian Bürkner (2017). brms: An R Package for Bayesian Multilevel Models Using Stan.
+  Journal of Statistical Software, 80(1), 1-28. doi:10.18637/jss.v080.i01
 
-You can also embed plots, for example:
+- Paul-Christian Bürkner (2018). Advanced Bayesian Multilevel Modeling with the R Package brms. The
+  R Journal, 10(1), 395-411. doi:10.32614/RJ-2018-017
+  
+- Canadian General Social Surveys (2017). General social survey on Family (cycle 31). URL https://www23.statcan.gc.ca/imdb/p2SV.pl?Function=getSurvey&Id=335816
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+- Stan Development Team (2020). RStan: the R interface to Stan. R package version 2.21.1. URL
+  http://mc-stan.org/.
