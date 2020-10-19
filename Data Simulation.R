@@ -364,7 +364,7 @@ gss_data <- tibble(
 
 #### Modelling ####
 
-# using brm
+# fit the bayesian regresssion model
 gss_model <- brm(life_satisfaction ~ household_size + house_owned + live_with_partner + no_child
                  + house,
                     data = gss_data,
@@ -372,16 +372,12 @@ gss_model <- brm(life_satisfaction ~ household_size + house_owned + live_with_pa
                     seed = 853)
 # summary of the model
 summary(gss_model)
+
 # plot
+plot(gss_model)
 mcmc_plot(gss_model)
 mcmc_plot(gss_model, type = "hist")
 mcmc_plot(gss_model, type = "trace")
-
-plot(gss_model)
-
-
-forest(gss_model)
-
 
 # posterior
 posterior <- as.array(gss_model)
