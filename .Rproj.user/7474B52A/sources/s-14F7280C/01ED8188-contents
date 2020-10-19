@@ -341,7 +341,13 @@ reduced_gss <-
     own_rent=="Owned by you or a member of this household, even if it i..." ~ "Owned",
     own_rent=="Rented, even if no cash rent is paid" ~ "Rented",
     TRUE ~ "NA"
-    ))
+    )) %>%
+  mutate(hh_type = case_when(
+    hh_type=="Single detached house" ~ "house",
+    hh_type=="Low-rise apartment (less than 5 stories)" ~ "apartment",
+    hh_type=="High-rise apartment (5 or more stories)"~ "apartment",
+    hh_type=="Other" ~ "other",
+  ))
 
 # Create dummy variables
 dummy_gss <- fastDummies::dummy_cols(reduced_gss)
@@ -351,14 +357,16 @@ gss_data <- tibble(
   household_size = dummy_gss$hh_size,
   house_owned = dummy_gss$own_rent_Owned,
   live_with_partner = dummy_gss$lives_with_partner_Yes,
-  no_child = dummy_gss$`children_in_household_No child`
+  no_child = dummy_gss$`children_in_household_No child`,
+  house = dummy_gss$hh_type_house,
 )
 
 
 #### Modelling ####
 
 # using brm
-gss_model <- brm(life_satisfaction ~ household_size + house_owned + live_with_partner + no_child,
+gss_model <- brm(life_satisfaction ~ household_size + house_owned + live_with_partner + no_child
+                 + house,
                     data = gss_data,
                     family  = gaussian(),
                     seed = 853)
@@ -368,6 +376,13 @@ summary(gss_model)
 mcmc_plot(gss_model)
 mcmc_plot(gss_model, type = "hist")
 mcmc_plot(gss_model, type = "trace")
+
+plot(gss_model)
+
+
+forest(gss_model)
+
+
 # posterior
 posterior <- as.array(gss_model)
 bayesplot::mcmc_intervals(posterior)

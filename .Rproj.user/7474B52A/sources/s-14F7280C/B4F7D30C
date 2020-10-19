@@ -12,14 +12,14 @@
     "properties": {
         "expression": "dummy_gss",
         "caption": "dummy_gss",
-        "totalObservations": 20331,
-        "displayedObservations": 20331,
-        "variables": 21,
-        "cacheKey": "BBCE3708",
+        "totalObservations": "20331",
+        "displayedObservations": "20331",
+        "variables": "19",
+        "cacheKey": "6ABFF65B",
         "object": "dummy_gss",
         "environment": "",
-        "contentUrl": "grid_resource/gridviewer.html?env=&obj=dummy_gss&cache_key=BBCE3708&max_cols=50",
-        "preview": 0
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=dummy_gss&cache_key=6ABFF65B&max_cols=50",
+        "preview": "0"
     },
     "folds": "",
     "lastKnownWriteTime": 217020505629131520,

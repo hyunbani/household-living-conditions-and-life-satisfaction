@@ -3,7 +3,7 @@
     "path": "~/sta304-ps3/Data Simulation.R",
     "project_path": "Data Simulation.R",
     "type": "r_source",
-    "hash": "0",
+    "hash": "913423767",
     "contents": "",
     "dirty": false,
     "created": 1602989597127.0,
@@ -11,15 +11,15 @@
     "relative_order": 1,
     "properties": {
         "tempName": "Untitled1",
-        "cursorPosition": "366,6",
-        "scrollLine": "355"
+        "cursorPosition": "381,0",
+        "scrollLine": "354"
     },
     "folds": "",
-    "lastKnownWriteTime": 1603108993,
+    "lastKnownWriteTime": 1603121173,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1603108993386,
+    "last_content_update": 1603121173910,
     "read_only": false,
     "read_only_alternatives": []
 }
