@@ -12,11 +12,11 @@ Full code and data supporting this analysis is available at: https://github.com/
 
 # Data 
 
+# Model
+
 # Results
 
 # Discussion
-
-# Weaknesses and Next Steps
 
 # References
 

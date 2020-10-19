@@ -3,7 +3,7 @@
     "path": "~/sta304-ps3/can-household-living-conditions-affect-life-satisfaction.Rmd",
     "project_path": "can-household-living-conditions-affect-life-satisfaction.Rmd",
     "type": "r_markdown",
-    "hash": "3001765572",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1603063115075.0,
@@ -11,16 +11,16 @@
     "relative_order": 3,
     "properties": {
         "tempName": "Untitled1",
-        "cursorPosition": "43,93",
-        "scrollLine": "28",
+        "cursorPosition": "19,0",
+        "scrollLine": "11",
         "last_setup_crc32": "14F7280Cbb338d19"
     },
     "folds": "",
-    "lastKnownWriteTime": 1603067419,
+    "lastKnownWriteTime": 1603067916,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1603067419813,
+    "last_content_update": 1603067916215,
     "read_only": false,
     "read_only_alternatives": []
 }
