@@ -6,9 +6,12 @@ abstract: "TODO"
 output: pdf_document
 ---
 
+[^1]: hello.
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 
 ## R Markdown
 
