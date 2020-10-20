@@ -29,19 +29,66 @@ Our prediction to the model is that: 1. people live in houses have higher life s
 
 Full code and data supporting this analysis is available at: https://github.com/hyunbani/household-living-conditions-and-life-satisfaction
 
-# Data 
+# Data
 
-The data was collected from Statistics Canada's General Social Survey (GSS), which is an annual survey with statistical information on the living conditions and well-being of people living in Canada. In this report, we are using the data collected in 2017, through telephone interview. 
+## General Description of GSS
 
-People of interest were those who are 15 years of age and older, living in the 10 provinces. However, it would be costly and impractical to survey each and every household in Canada, so random sampling was chosen as a method to determine the sample of 43,000 people, which reflects the population. In order to ensure that the sample is an accurate reflection of the population as a whole, the survey results from all sampled households were collected, and only one eligible person per household was interviewed.
+Statistics Canada's General Social Survey (GSS) is an annual survey with statistical information on the living conditions and well-being of people living in Canada. In this report, we are using the data collected in 2017. The main focus of that year's survey is "Family".
 
-Since the answers are kept strictly confidential, the respondents must have provided the answers in a more honest manner, leading to an increase in accuracy of data information. However, the collection method was not very efficient since it took a lot of time to collect answers through telephone interview, and many people tend to not answer the phone calls. 
+The Survey is divided into 86 minor sections, with around 200 questions in total, to describe the respondent's general identity, marriage, family relationships and identity, child care, social involvements, living conditions, career, and religion.
 
-People who did not answer the telephone calls were excluded from the sample. However, there still existed some non responses for some of the questions being asked, and these were recorded as 'NA' in the data. However, for better analysis, rows with answers including 'NA' are removed after reducing the data so that it only contains the variables of interest in this study.
+People of interest were those aged at 15 and older, living in all 10 provinces in Canada. However, it would be costly and impractical to survey each and every household in Canada, so random sampling was chosen as a method to determine the sample of 43,000 people, which reflects the population. In order to ensure that the sample is an accurate reflection of the population as a whole, the survey results from all sampled households were collected, and only one eligible person per household was interviewed.
 
-The response variable 'Life Satisfaction' is measured on a scale of 0 to 10, with 10 being the highest satisfaction level and 0 being the lowest. The explanatory variables that explain household living conditions are included such as 'Household Size', 'Owned', 'Partner', 'No Child' and 'Single House'.
+## Collection of GSS Data
 
-The explanation of each explanatory variable is as follows:\
+The 2017 GSS was performed through telephone interviews. People who did not answer the telephone calls were excluded from the sample. However, there still exist some non responses for some of the questions being asked, and these are recorded as 'NA' in the dataset. 
+
+Since the answers are kept strictly confidential, the respondents must have provided the answers in a more honest manner, leading to an increase in accuracy of data information. However, as there are about 200 questions in total, even if some can be validly skipped according to respondent's status, it still took a lot of time to complete one servey. Besides, many people tend to refuse the phone calls. Thus, we believed that telephone interview might not be the most efficient collecting method. 
+
+## About Our Studies
+
+The team's interest of study is the relationship between life satisfaction and living conditions. We extract colume "feelings_life" to represent life satisfaction. We also extract columes "own_rent", "hh_type", "hh_size", "lives_with_partner", and "children_in_household" to describe household living conditions.
+
+Our response variable "feelings_life" is a discrete numerical variable measured on a scale of intergers from 0 to 10, with 10 being the highest satisfaction level and 0 being the lowest. The team was previously interested in using data "self_rated_mental_health", which use categorical variables "poor", "fair", "good", "very good", "exellent" to describe the respondent's mental conditions. However, we experience difficulties creating and summerizing the model using this variable, even if we give it numerical expression. Then we switch to the current variable "feelings_life". We believe that it is an upper level data included the effect of respondent's mental health.
+
+Figure 1 below is a bar graph showing the proportion of respondents' life satisfaction.
+
+
+```{r plot, echo=FALSE, message=FALSE, results='hide'}
+gss_household <- read_csv("gss_cleaned.csv")
+gss_household <- na.omit(gss_household)
+gss_household <- gss_household %>%
+  mutate(own_rent = case_when(
+    own_rent == "Owned by you or a member of this household, even if it i..." ~ "Owned",
+    own_rent == "Rented, even if no cash rent is paid" ~ "Rented"
+  ))
+
+gss_household %>%
+  ggplot(mapping = aes(x=feelings_life)) + 
+  geom_bar(aes(y = (..count..)/sum(..count..))) +
+  ggtitle("Figure1: Proportion of Respondents' Life Satisfaction")+
+  xlab("Life Satisfaction Level")+
+  ylab("Proportion")+
+  scale_x_continuous(breaks = seq(0,10,1))
+
+summary(gss_household$feelings_life)
+```
+
+The graph in figure 1 shows that about 40% of the respondents rated their life satisfaction to 9 and 10, about 45% of the respondents rated 7 and 8 (with 30% in total rated 8), 10% rated 5 and 6, and less than 5% rated 4 and below. The median is 8 and mean life satisfaction is 8.101. We are pretty confident to say that most of the respondents have a pretty good attitudes toward life.
+
+Variable "own_rent" illustrates if the respondents owned or rented their current residence. We believe that it is related to respondents' income level. However, factors like family history also affects respondents' ownership to a residence.
+
+Variable "hh_type" shows the type of residence the respondents were living in, including "high rise apartment", "low rise apartment", "single detached house", and "other". The team has simplified the variable to two parameters, "single detached house" and "other" representing the other 3 residence types.
+
+Variable "hh_size" is a categorical variable specified by integers from 1 to 6 showing the size of the household. "6" is specially representing a household of 6 or more people. In our model, we will treat this as a discrete numeric variable.
+
+Variable "lives_with_partner" is a categorical variable showing if the respondent is living with a partner (married or not married). The variable includes some effect of the respondents' status of marriage. However, the variable doesn't measure the effect of parents in a household as some respondents probably lives together with their parents.
+
+Variable "children_in_household" is a categorical variable showing how many children are living in the household. Non-relative children are also counted. The original data is classified by "no child", "one child", "two children", and "three or more children". In our model, we simplified it to just measure the effects of having child or not inside the household.
+
+For the test set the team is using in the model, we have created some dummy variables for the data set. The default setting of a respondent is: "rent the residence", "lives in other types of residence", "lives without partner", "lives without child in household".
+
+We have also modified names to the variables. The explanation of each explanatory variable is as follows:\
 1) 'Household Size' - the number of people each respondent lives with\
 2) 'Owned' - 1 if a respondent owns the house and 0 if he/she doesn't\
 3) 'Partner' - 1 if a respondent lives with a partner and 0 if he/she doesn't\
@@ -116,7 +163,7 @@ function(fit,...){
   import<-import[order(import),1,drop=FALSE]
   dotchart(import$Weights,labels=c("No Child","Partner","Household Size","Single House","Owned"),
            xlab="% of R-Square",pch=19,
-           main="Figure1: Relative Importance of Predictor Variables",
+           main="Figure2: Relative Importance of Predictor Variables",
            sub=paste("Total R-Square=",round(rsquare,digits=3)),
            ...)
   return(import)
