@@ -78,6 +78,8 @@ The graph in figure 1 shows that about 40% of the respondents rated their life s
 
 Variable "own_rent" illustrates if the respondents owned or rented their current residence. We believe that it is related to respondents' income level. However, factors like family history also affects respondents' ownership to a residence.
 
+Variable "own_rent" illustrates if the respondents owned or rented their current residence. The following figure shows the proportion of residence ownership of the respondents.
+
 Variable "hh_type" shows the type of residence the respondents were living in, including "high rise apartment", "low rise apartment", "single detached house", and "other". The team has simplified the variable to two parameters, "single detached house" and "other" representing the other 3 residence types.
 
 Variable "hh_size" is a categorical variable specified by integers from 1 to 6 showing the size of the household. "6" is specially representing a household of 6 or more people. In our model, we will treat this as a discrete numeric variable.
@@ -178,30 +180,33 @@ From Table 2, We see that the p-values (represented as Pr(>|t|)) for all explana
 
 However, the significance for each explanatory variable is different on the response variable. If you look at Figure 2, you will see that whether you own the house or not has the biggest impact on your life satisfaction level. The variable with the least impact is having no child and this can also be seen through the graph. 
 
+The error of our model seems to have the greatest effect on our model. The effect is greater than the sum of all the influences of our variables in the model we have. We are still confident that household living conditions has a noticeable impact on respondents' life satisfaction. However, we suspect that there is other factor other than living conditions that significantly affect respondents' life satisfaction. Focuses like religious effects, education effects, career effects and/or a more detailed version of living conditions can be considers.
+
 # References
 
-- R Core Team (2020). R: A language and environment for statistical computing. R Foundation for
-  Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
+Canadian General Social Surveys (2017). General social survey on Family (cycle 31). URL https://www23.statcan.gc.ca/imdb/p2SV.pl?Function=getSurvey&Id=335816
+
+Hadley Wickham and Evan Miller (2020). haven: Import and Export 'SPSS', 'Stata' and 'SAS' Files.
+  R package version 2.3.1. URL https://CRAN.R-project.org/package=haven
+
+  Hadley Wickham. ggplot2: Elegant Graphics for Data Analysis.
+  Springer-Verlag New York, 2016.
   
-- JJ Allaire and Yihui Xie and Jonathan McPherson and Javier Luraschi and Kevin Ushey and Aron
+Jacob Kaplan (2020). fastDummies: Fast Creation of Dummy (Binary) Columns and Rows from
+  Categorical Variables. R package version 1.6.2. URL https://CRAN.R-project.org/package=fastDummies
+
+JJ Allaire and Yihui Xie and Jonathan McPherson and Javier Luraschi and Kevin Ushey and Aron
   Atkins and Hadley Wickham and Joe Cheng and Winston Chang and Richard Iannone (2020). rmarkdown:
   Dynamic Documents for R. R package version 2.3. URL https://rmarkdown.rstudio.com.
+
+R Core Team (2020). R: A language and environment for statistical computing. R Foundation for
+  Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
   
-- Yihui Xie and J.J. Allaire and Garrett Grolemund (2018). R Markdown: The Definitive Guide.
-  Chapman and Hall/CRC. ISBN 9781138359338. URL https://bookdown.org/yihui/rmarkdown.
-  
-- Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686. URL
+Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686. URL
   https://doi.org/10.21105/joss.01686
 
-  
-- Canadian General Social Surveys (2017). General social survey on Family (cycle 31). URL https://www23.statcan.gc.ca/imdb/p2SV.pl?Function=getSurvey&Id=335816
-
-  
-- Hadley Wickham and Evan Miller (2020). haven: Import and Export 'SPSS', 'Stata' and 'SAS' Files.
-  R package version 2.3.1. URL https://CRAN.R-project.org/package=haven
-  
-- Jacob Kaplan (2020). fastDummies: Fast Creation of Dummy (Binary) Columns and Rows from
-  Categorical Variables. R package version 1.6.2. URL https://CRAN.R-project.org/package=fastDummies
+Yihui Xie and J.J. Allaire and Garrett Grolemund (2018). R Markdown: The Definitive Guide.
+  Chapman and Hall/CRC. ISBN 9781138359338. URL https://bookdown.org/yihui/rmarkdown.
   
   Yihui Xie (2020). knitr: A General-Purpose Package for Dynamic Report Generation in R. R package
   version 1.30.
@@ -213,5 +218,3 @@ However, the significance for each explanatory variable is different on the resp
   Friedrich Leisch and Roger D. Peng, editors, Implementing Reproducible Computational Research.
   Chapman and Hall/CRC. ISBN 978-1466561595
   
-  H. Wickham. ggplot2: Elegant Graphics for Data Analysis.
-  Springer-Verlag New York, 2016.
