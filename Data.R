@@ -9,6 +9,7 @@ install.packages("rstan")
 library(janitor)
 library(tidyverse)
 library(haven)
+
 library(fastDummies)
 library(brms)
 library(rstan)
@@ -361,25 +362,4 @@ gss_data <- tibble(
   house = dummy_gss$hh_type_house,
 )
 
-
-#### Modelling ####
-
-# fit the bayesian regresssion model
-gss_model <- brm(life_satisfaction ~ household_size + house_owned + live_with_partner + no_child
-                 + house,
-                    data = gss_data,
-                    family  = gaussian(),
-                    seed = 853)
-# summary of the model
-summary(gss_model)
-
-# plot
-plot(gss_model)
-mcmc_plot(gss_model)
-mcmc_plot(gss_model, type = "hist")
-mcmc_plot(gss_model, type = "trace")
-
-# posterior
-posterior <- as.array(gss_model)
-bayesplot::mcmc_intervals(posterior)
 

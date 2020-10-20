@@ -10,16 +10,22 @@ output: pdf_document
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 #### Packages installation ####
 #install.packages("tidyverse")
-#install.packages("brms")
-#install.packages("rstan")
-
 #### Workspace set-up ####
 library(tidyverse)
-library(brms)
-library(rstan)
 ```
 
 # Introduction
+
+In our studies, we established an interest about the relationship between people's life satisfaction and their living conditions. Resourced from Canadian GSS in 2017, our team is going to describe an individual's living conditions from the following aspects:
+
+1. Household type: what type of residence is the respondent living in (house, apartment, etc.)?
+2. Household size: how many residents (relatives and non-relatives), including the respondent, are living in the residence?
+3. Ownership of the residence: is the respondent owning or renting the residence?
+4. Cohabitation: Is the respondent living with a partner (married or not married)
+5. Children in household: Is there any child (relatives and non-relatives) living in the residence?
+The detail of the above factors will be further described and explained in Section "Model".
+
+Our prediction to the model is that: 1. people live in houses have higher life satisfaction; 2. the larger the household size, the higher the life satisfaction; 3. people owning the residence have higher life satisfaction; 4. people live with their partners have higher life satisfaction; 5. people live with children have higher life satisfaction.
 
 Full code and data supporting this analysis is available at: https://github.com/hyunbani/household-living-conditions-and-life-satisfaction
 
@@ -33,9 +39,9 @@ Since the answers are kept strictly confidential, the respondents must have prov
 
 People who did not answer the telephone calls were excluded from the sample. However, there still existed some non responses for some of the questions being asked, and these were recorded as 'NA' in the data. However, for better analysis, rows with answers including 'NA' are removed after reducing the data so that it only contains the variables of interest in this study.
 
-The main variable 'Life Satisfaction' is measured on a scale of 0 to 10, with 10 being the highest satisfaction level and 0 being the lowest. The other variables that explain household living conditions are included such as 'Household Size', 'Owned', 'Partner', 'No Child' and 'Single House'.
+The response variable 'Life Satisfaction' is measured on a scale of 0 to 10, with 10 being the highest satisfaction level and 0 being the lowest. The explanatory variables that explain household living conditions are included such as 'Household Size', 'Owned', 'Partner', 'No Child' and 'Single House'.
 
-The explanation of each independent variable is as follows:\
+The explanation of each explanatory variable is as follows:\
 1) 'Household Size' - the number of people each respondent lives with\
 2) 'Owned' - 1 if a respondent owns the house and 0 if he/she doesn't\
 3) 'Partner' - 1 if a respondent lives with a partner and 0 if he/she doesn't\
@@ -58,32 +64,28 @@ knitr::kable(gss_data[0:10, ], col.names = c("Case", "Life Satisfaction", "House
 
 # Model
 
-We are interested in explaining whether a person's life satisfaction improves when he/she has better household living conditions, based on household size, house ownership, whether he/she has a partner, no child, and lives in a single detached house. 
+We are interested in explaining whether a person's life satisfaction improves when he/she has better household living conditions, based on household size, house ownership, whether he/she has a partner, no child, and lives in a single detached house. In order to do so, we are going to fit a multiple linear regression model.
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE, results='hide', include=FALSE}
-# fit the Bayesian regression model
-# using the seed number as my student id
-gss_model <- brm(life_satisfaction ~ household_size + house_owned + live_with_partner + no_child
-                 + house,
-                    data = gss_data,
-                    family  = gaussian(),
-                    seed = 1002965776)
+Multiple linear regression is a statistical technique that uses several explanatory variables to predict the outcome of a response variable. The goal of it is to model the linear relationship between the explanatory (independent) variables and response (dependent) variables.
+
+As discussed in the data section, the dependent variable is Life Satisfaction and the explanatory variables are Household Size, Owned, Partner, No Child and Single House.
+
+Formula and calculation of this model is as follows:
+$$y_i=\beta_0+\beta_1{x_i}_1+\beta_2{x_i}_2+\beta_3{x_i}_3+\beta_4{x_i}_4+\beta_5{x_i}_5+\beta_6{x_i}_6+\epsilon$$
+where, for $i=20331$ observations:\
+$y_i=$ dependent variable\
+$x_i=$ explanatory variables\
+$\beta_0=$ y-intercept (constant term)\
+$\beta_1...\beta_6=$ slope coefficients for each explanatory variable\
+$\epsilon=$ the model's error term (also known as the residuals)
+
+```{r, echo=FALSE, warning=FALSE}
+gss_model<-lm(life_satisfaction~household_size+house_owned+live_with_partner+no_child+house,data=gss_data)
 ```
 
 
 
 # Results
-
-Summary
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-summary(gss_model)
-
-
-mcmc_plot(gss_model)
-mcmc_plot(gss_model, type = "hist")
-mcmc_plot(gss_model, type = "trace")
-```
 
 # Discussion
 
