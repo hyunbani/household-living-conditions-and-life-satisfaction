@@ -382,3 +382,4 @@ mcmc_plot(gss_model, type = "trace")
 # posterior
 posterior <- as.array(gss_model)
 bayesplot::mcmc_intervals(posterior)
+

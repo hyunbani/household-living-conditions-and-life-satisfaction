@@ -6,6 +6,19 @@ abstract: "This report describes the effects of household living conditions on l
 output: pdf_document
 ---
 
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+#### Packages installation ####
+#install.packages("tidyverse")
+#install.packages("brms")
+#install.packages("rstan")
+
+#### Workspace set-up ####
+library(tidyverse)
+library(brms)
+library(rstan)
+```
+
 # Introduction
 
 Full code and data supporting this analysis is available at: https://github.com/hyunbani/household-living-conditions-and-life-satisfaction
@@ -29,18 +42,48 @@ The explanation of each independent variable is as follows:\
 4) 'No Child' - 1 if a respondent doesn't have any child and 0 if he/she does\
 5) 'Single House' - 1 if respondent's house type is single detached house and 0 if it's not 
 
-The first ten rows of the data are shown below.
+Table 1 below shows the first ten rows of the data with the variables of interest.
 
-```{r, echo=FALSE, warning=FALSE}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+# this is needed to form a table
 library(knitr)
+
+# gss_data.csv (reduced and cleaned raw data) is brought from the outputs folder and was created in Data.R
 gss_data = read.csv("outputs/gss_data.csv")
-knitr::kable(gss_data[0:10, ], col.names = c("Case", "Life Satisfaction", "Household Size", "Owned", "Partner", "No Child", "Single House"))
+
+# forming a table showing the first ten rows of the above data
+knitr::kable(gss_data[0:10, ], col.names = c("Case", "Life Satisfaction", "Household Size", "Owned", "Partner", "No Child", "Single House"), caption = "First 10 Rows of Raw Data")
 ```
 
 
 # Model
 
+We are interested in explaining whether a person's life satisfaction improves when he/she has better household living conditions, based on household size, house ownership, whether he/she has a partner, no child, and lives in a single detached house. 
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, results='hide', include=FALSE}
+# fit the Bayesian regression model
+# using the seed number as my student id
+gss_model <- brm(life_satisfaction ~ household_size + house_owned + live_with_partner + no_child
+                 + house,
+                    data = gss_data,
+                    family  = gaussian(),
+                    seed = 1002965776)
+```
+
+
+
 # Results
+
+Summary
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+summary(gss_model)
+
+
+mcmc_plot(gss_model)
+mcmc_plot(gss_model, type = "hist")
+mcmc_plot(gss_model, type = "trace")
+```
 
 # Discussion
 
