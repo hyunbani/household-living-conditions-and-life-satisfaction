@@ -163,7 +163,7 @@ function(fit,...){
   import<-import[order(import),1,drop=FALSE]
   dotchart(import$Weights,labels=c("No Child","Partner","Household Size","Single House","Owned"),
            xlab="% of R-Square",pch=19,
-           main="Figure2: Relative Importance of Predictor Variables",
+           main="Figure 2: Relative Importance of Predictor Variables",
            sub=paste("Total R-Square=",round(rsquare,digits=3)),
            ...)
   return(import)
@@ -174,6 +174,9 @@ relweights(gss_model)
 
 # Discussion
 
+From Table 2, We see that the p-values (represented as Pr(>|t|)) for all explanatory variables are less than 0.10. From this, we know that all these factors increase the life satisfaction level with a significance level of 0.10. It means that you will be more satisfied with your life if you have more people living in your household, own the house, live with a partner, live with no child, and live in a single detached house.
+
+However, the significance for each explanatory variable is different on the response variable. If you look at Figure 2, you will see that whether you own the house or not has the biggest impact on your life satisfaction level. The variable with the least impact is having no child and this can also be seen through the graph. 
 
 # References
 
